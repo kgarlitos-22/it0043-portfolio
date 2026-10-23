@@ -18,6 +18,7 @@
 
 header {
     position: relative;
+    padding-top: 20px;
 }
 
 #menu-button {
@@ -82,7 +83,9 @@ footer {
 .sheene-card {
     display: flex;
     color: #c577f5;
+    align-items: center;
     justify-content: center;
+    text-align: center;
     font-size: 72px;
     font-weight: bold;
     background-color: rgb(166, 255, 131);
@@ -140,6 +143,40 @@ nav a:hover {
    background-color: #8d35c5;
 }
 
+#theme-button {
+    position: absolute;
+    top: var(--space-3);
+    right: 64px;
+    z-index: 10;
+}
+
+#menu-button,
+#theme-button {
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 6px;
+}
+
+#menu-button:hover,
+#theme-button:hover {
+    background-color: #8d35c5;
+}
+
+body.dark-mode {
+    --color-background:  #a13054;
+    --color-text: #f5f5f5;
+    --color-primary: #7040a8;
+}
+
+body.dark-mode .card {
+    background-color: #2d2d2d;
+    color: #f5f5f5;
+}
+
+body.dark-mode .sheene-card {
+    background-color: #4f8f45;
+    color: #f5f5f5;
+}
 
 body, html {
     margin: 0;
