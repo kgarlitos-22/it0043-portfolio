@@ -143,6 +143,37 @@ nav a:hover {
    background-color: #8d35c5;
 }
 
+#skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+}
+
+.skill-column {
+    padding: var(--space-3);
+    background-color: #f3d8ff;
+    border-radius: 12px;
+}
+
+.skill-column h3 {
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.skill-column p {
+    text-align: center;
+}
+
+body.dark-mode .skill-column {
+    background-color: #49304f;
+}
+
+@media (max-width: 600px) {
+    #skills-container {
+        grid-template-columns: 1fr;
+    }
+}
+
 #theme-button {
     position: absolute;
     top: var(--space-3);
@@ -211,4 +242,30 @@ main {
     align-items: center;
     gap: 50px;
     padding: 25px;
+}
+
+.skills-card {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.skills-card h2 {
+    color: white;
+    text-align: center;
+}
+
+.skill-column {
+    padding: var(--space-3);
+    background-color: #a6ff83;
+    color: black;
+    border-radius: 12px;
+}
+
+main .skills-card {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+main .skills-card h2 {
+    color: white;
 }
