@@ -1,0 +1,177 @@
+:root {
+    --color-background: #ffa7a7;
+    --color-text: #000000;
+    --color-primary: #ab54e7;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 16px;
+    --space-4: 24px;
+    --space-5: 32px;
+    --space-6: 48px;
+
+    --text-small: 13px;
+    --text-body: 16px;
+    --text-subheading: 24px;
+    --text-heading: 48px;
+}
+
+header {
+    position: relative;
+}
+
+#menu-button {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    z-index: 10;
+}
+
+.profile-pic {
+    object-fit: cover;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+    margin: 2rem auto;
+    display: block;
+}
+
+.meet {
+    font-size: var(--text-heading);
+    font-weight: bold;
+    color: #cf6ddc;
+    background-color: #ffffff;
+}
+
+.button {
+    display: block;
+    justify-content: center;
+    flex: none;
+    margin: 20px auto;
+    width: fit-content;
+    padding: 15px 30px;
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+    background-color: #8d35c5;
+}
+
+.button:focus {
+    outline: 3px solid white;
+    outline-offset: 3px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    margin-top: auto;
+    flex direction: column;
+    width: 100%;
+    
+}
+
+.sheene-card {
+    display: flex;
+    color: #c577f5;
+    justify-content: center;
+    font-size: 72px;
+    font-weight: bold;
+    background-color: rgb(166, 255, 131);
+    max-width: 800px;
+    margin: 40px auto;
+    padding: var(--space-4);
+    border-radius: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+    background-color: white;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: var(--space-4);
+    border-radius: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.centered-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+}
+
+#main-nav.is-hidden {
+    display: none;
+}
+
+nav a {
+    display: inline-block;
+    padding: var(--space-3);
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+nav a:focus {
+    outline: 3px solid white;
+    outline-offset: 3px;
+}
+
+nav a:hover {
+   background-color: #8d35c5;
+}
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+html, body {
+    min-width: 400px;
+    min-height: 100%;
+}
+body, input, button {
+    font-size: var(--text-body);
+    font-family: Arial, sans-serif, Noto Color Emoji;
+    color: var(--color-text);
+}
+body {
+    background: var(--color-background);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    padding: 25px;
+}
