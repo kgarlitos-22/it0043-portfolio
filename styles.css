@@ -269,3 +269,40 @@ main .skills-card {
 main .skills-card h2 {
     color: white;
 }
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+#contact-form input,
+#contact-form textarea {
+    padding: var(--space-2);
+    border: 1px solid #999;
+    border-radius: 6px;
+}
+
+#contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+#contact-form button {
+    padding: var(--space-2);
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.error-message {
+    color: #c00000;
+    margin: 0;
+}
+
+#success-message {
+    color: green;
+    margin: 0;
+}

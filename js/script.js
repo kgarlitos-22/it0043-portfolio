@@ -114,3 +114,50 @@ if (skillsContainer) {
         skillsContainer.append(strengthsColumn, improvementColumn);
     }
 }
+
+const contactForm = document.querySelector("#contact-form");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const nameInput = document.querySelector("#name");
+        const emailInput = document.querySelector("#email");
+        const messageInput = document.querySelector("#message");
+
+        const nameError = document.querySelector("#name-error");
+        const emailError = document.querySelector("#email-error");
+        const messageError = document.querySelector("#message-error");
+        const successMessage = document.querySelector("#success-message");
+
+        nameError.textContent = "";
+        emailError.textContent = "";
+        messageError.textContent = "";
+        successMessage.textContent = "";
+
+        let formIsValid = true;
+
+        if (nameInput.value.trim() === "") {
+            nameError.textContent = "Invalid input: name is required.";
+            formIsValid = false;
+        }
+
+        if (emailInput.value.trim() === "") {
+            emailError.textContent = "Invalid input: email is required.";
+            formIsValid = false;
+        } else if (!emailInput.value.includes("@")) {
+            emailError.textContent = "Invalid input: enter a valid email address.";
+            formIsValid = false;
+        }
+
+        if (messageInput.value.trim() === "") {
+            messageError.textContent = "Invalid input: message is required.";
+            formIsValid = false;
+        }
+
+        if (formIsValid) {
+            successMessage.textContent = "Your message was submitted successfully!";
+            contactForm.reset();
+        }
+    });
+}

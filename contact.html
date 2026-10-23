@@ -24,16 +24,26 @@
 
     <main>
         <article class="card">
-        <section>
-            <h2>Invitation</h2>
-            <p>Feel free to get in touch with me through the following information. </p>
-        </section>
-        </article>
+            <h2>Contact Me</h2>
 
-        <article class="card">
-            <h2>Contact details</h2>
-            <p>kgarlitos@fit.edu.ph</p>
-         </article>
+            <form id="contact-form" novalidate>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <p id="name-error" class="error-message"></p>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <p id="email-error" class="error-message"></p>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message"></textarea>
+                <p id="message-error" class="error-message"></p>
+
+                <button type="submit">Submit</button>
+
+                <p id="success-message"></p>
+            </form>
+        </article>
     </main>
 
     <footer>
