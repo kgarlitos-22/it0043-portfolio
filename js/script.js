@@ -125,6 +125,10 @@ if (contactForm) {
         const emailInput = document.querySelector("#email");
         const messageInput = document.querySelector("#message");
 
+        const nameValue = nameInput.value.trim();
+        const emailValue = emailInput.value.trim();
+        const messageValue = messageInput.value.trim();
+
         const nameError = document.querySelector("#name-error");
         const emailError = document.querySelector("#email-error");
         const messageError = document.querySelector("#message-error");
@@ -137,20 +141,20 @@ if (contactForm) {
 
         let formIsValid = true;
 
-        if (nameInput.value.trim() === "") {
+        if (nameValue === "") {
             nameError.textContent = "Invalid input: name is required.";
             formIsValid = false;
         }
 
-        if (emailInput.value.trim() === "") {
+        if (emailValue === "") {
             emailError.textContent = "Invalid input: email is required.";
             formIsValid = false;
-        } else if (!emailInput.value.includes("@")) {
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
             emailError.textContent = "Invalid input: enter a valid email address.";
             formIsValid = false;
         }
 
-        if (messageInput.value.trim() === "") {
+        if (messageValue === "") {
             messageError.textContent = "Invalid input: message is required.";
             formIsValid = false;
         }
