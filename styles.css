@@ -46,8 +46,6 @@ header {
 
 .button {
     display: block;
-    justify-content: center;
-    flex: none;
     margin: 20px auto;
     width: fit-content;
     padding: 15px 30px;
@@ -71,21 +69,19 @@ header {
 footer {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     background-color: var(--color-primary);
     color: white;
-    text-decoration: none;
     margin-top: auto;
-    flex direction: column;
     width: 100%;
-    
 }
 
 .sheene-card {
     display: flex;
-    color: #c577f5;
     align-items: center;
     justify-content: center;
     text-align: center;
+    color: #c577f5;
     font-size: 72px;
     font-weight: bold;
     background-color: rgb(166, 255, 131);
@@ -140,7 +136,7 @@ nav a:focus {
 }
 
 nav a:hover {
-   background-color: #8d35c5;
+    background-color: #8d35c5;
 }
 
 #skills-container {
@@ -151,27 +147,38 @@ nav a:hover {
 
 .skill-column {
     padding: var(--space-3);
-    background-color: #f3d8ff;
+    background-color: #a6ff83;
+    color: black;
     border-radius: 12px;
 }
 
 .skill-column h3 {
     text-align: center;
-    color: var(--color-primary);
+    color: var(--color-text);
 }
 
 .skill-column p {
     text-align: center;
 }
 
-body.dark-mode .skill-column {
+html.dark-mode {
+    --color-background: #a13054;
+    --color-text: #f5f5f5;
+    --color-primary: #7040a8;
+}
+
+html.dark-mode .skill-column {
     background-color: #49304f;
 }
 
-@media (max-width: 600px) {
-    #skills-container {
-        grid-template-columns: 1fr;
-    }
+html.dark-mode .card {
+    background-color: #2d2d2d;
+    color: #f5f5f5;
+}
+
+html.dark-mode .sheene-card {
+    background-color: #4f8f45;
+    color: #f5f5f5;
 }
 
 #theme-button {
@@ -193,38 +200,28 @@ body.dark-mode .skill-column {
     background-color: #8d35c5;
 }
 
-body.dark-mode {
-    --color-background:  #a13054;
-    --color-text: #f5f5f5;
-    --color-primary: #7040a8;
-}
-
-body.dark-mode .card {
-    background-color: #2d2d2d;
-    color: #f5f5f5;
-}
-
-body.dark-mode .sheene-card {
-    background-color: #4f8f45;
-    color: #f5f5f5;
-}
-
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     width: 100%;
     overflow-x: hidden;
 }
 
-html, body {
+html,
+body {
     min-width: 400px;
     min-height: 100%;
 }
-body, input, button {
+
+body,
+input,
+button {
     font-size: var(--text-body);
-    font-family: Arial, sans-serif, Noto Color Emoji;
+    font-family: Arial, sans-serif, "Noto Color Emoji";
     color: var(--color-text);
 }
+
 body {
     background: var(--color-background);
     display: flex;
@@ -252,22 +249,6 @@ main {
 .skills-card h2 {
     color: white;
     text-align: center;
-}
-
-.skill-column {
-    padding: var(--space-3);
-    background-color: #a6ff83;
-    color: black;
-    border-radius: 12px;
-}
-
-main .skills-card {
-    background-color: var(--color-primary);
-    color: white;
-}
-
-main .skills-card h2 {
-    color: white;
 }
 
 #contact-form {
@@ -305,4 +286,24 @@ main .skills-card h2 {
 #success-message {
     color: green;
     margin: 0;
+}
+
+@media (max-width: 600px) {
+    #skills-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+html.dark-mode .skill-column,
+html.dark-mode .skill-column h3,
+html.dark-mode .skill-column p {
+    color: white;
+}
+
+html.dark-mode .card:has(#skills-container) {
+    background-color: #49304f;
+}
+
+html.dark-mode #skills-container .skill-column {
+    background-color: #4f8f45;
 }

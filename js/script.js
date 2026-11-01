@@ -1,41 +1,60 @@
+const defaultSettings = {
+    theme: "light",
+    visitorName: "",
+    lastVisit: null,
+    menuState: "visible"
+};
+
+let settings = { ...defaultSettings };
+
+try {
+    const savedSettings = localStorage.getItem("siteSettings");
+
+    if (savedSettings) {
+        settings = {
+            ...defaultSettings,
+            ...JSON.parse(savedSettings)
+        };
+    }
+} catch (error) {
+    settings = { ...defaultSettings };
+}
+
+function saveSettings() {
+    localStorage.setItem("siteSettings", JSON.stringify(settings));
+}
+
+if (settings.theme === "dark") {
+    document.documentElement.classList.add("dark-mode");
+}
+
+settings.lastVisit = new Date().toISOString();
+saveSettings();
+
 const menuButton = document.querySelector("#menu-button");
 const mainNav = document.querySelector("#main-nav");
 
 if (menuButton && mainNav) {
-    const savedMenuState = localStorage.getItem("menuState");
-
-    if (savedMenuState === "hidden") {
+    if (settings.menuState === "hidden") {
         mainNav.classList.add("is-hidden");
-    } else {
-        mainNav.classList.remove("is-hidden");
     }
 
     menuButton.addEventListener("click", function () {
         const menuIsHidden = mainNav.classList.toggle("is-hidden");
 
-        if (menuIsHidden) {
-            localStorage.setItem("menuState", "hidden");
-        } else {
-            localStorage.setItem("menuState", "visible");
-        }
+        settings.menuState = menuIsHidden ? "hidden" : "visible";
+        saveSettings();
     });
 }
 
 const themeButton = document.querySelector("#theme-button");
-const savedTheme = localStorage.getItem("theme");
-
-if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-} else {
-    document.body.classList.remove("dark-mode");
-}
 
 function updateThemeButton() {
     if (!themeButton) {
         return;
     }
 
-    if (document.body.classList.contains("dark-mode")) {
+    if (settings.theme === "dark") {
         themeButton.textContent = "☀️ Light Mode";
     } else {
         themeButton.textContent = "🌙 Dark Mode";
@@ -46,14 +65,11 @@ updateThemeButton();
 
 if (themeButton) {
     themeButton.addEventListener("click", function () {
-        const darkModeIsActive = document.body.classList.toggle("dark-mode");
+        const darkModeIsActive =
+            document.documentElement.classList.toggle("dark-mode");
 
-        if (darkModeIsActive) {
-            localStorage.setItem("theme", "dark");
-        } else {
-            localStorage.setItem("theme", "light");
-        }
-
+        settings.theme = darkModeIsActive ? "dark" : "light";
+        saveSettings();
         updateThemeButton();
     });
 }
@@ -77,42 +93,33 @@ if (skillsContainer) {
 
     skillsContainer.replaceChildren();
 
-    if (skills.length === 0) {
-        skillsContainer.textContent =
-            "No items are available to display at the moment.";
-    } else {
-        const strengthsColumn = document.createElement("section");
-        strengthsColumn.className = "skill-column";
+    const strengthsColumn = document.createElement("section");
+    strengthsColumn.className = "skill-column";
 
-        const improvementColumn = document.createElement("section");
-        improvementColumn.className = "skill-column";
+    const improvementColumn = document.createElement("section");
+    improvementColumn.className = "skill-column";
 
-        const strengthsHeading = document.createElement("h3");
-        strengthsHeading.textContent = "My Strengths";
+    const strengthsHeading = document.createElement("h3");
+    strengthsHeading.textContent = "My Strengths";
 
-        const improvementHeading = document.createElement("h3");
-        improvementHeading.textContent = "Areas for Improvement";
+    const improvementHeading = document.createElement("h3");
+    improvementHeading.textContent = "Areas for Improvement";
 
-        strengthsColumn.append(strengthsHeading);
-        improvementColumn.append(improvementHeading);
+    strengthsColumn.append(strengthsHeading);
+    improvementColumn.append(improvementHeading);
 
-        skills.forEach(function (skill) {
-            const skillElement = document.createElement("p");
+    skills.forEach(function (skill) {
+        const skillElement = document.createElement("p");
+        skillElement.textContent = skill.name;
 
-            if (!skill.name || !skill.category) {
-                skillElement.textContent = "Invalid input";
-                improvementColumn.append(skillElement);
-            } else if (skill.category === "Strength") {
-                skillElement.textContent = skill.name;
-                strengthsColumn.append(skillElement);
-            } else {
-                skillElement.textContent = skill.name;
-                improvementColumn.append(skillElement);
-            }
-        });
+        if (skill.category === "Strength") {
+            strengthsColumn.append(skillElement);
+        } else {
+            improvementColumn.append(skillElement);
+        }
+    });
 
-        skillsContainer.append(strengthsColumn, improvementColumn);
-    }
+    skillsContainer.append(strengthsColumn, improvementColumn);
 }
 
 const contactForm = document.querySelector("#contact-form");
@@ -125,14 +132,14 @@ if (contactForm) {
         const emailInput = document.querySelector("#email");
         const messageInput = document.querySelector("#message");
 
-        const nameValue = nameInput.value.trim();
-        const emailValue = emailInput.value.trim();
-        const messageValue = messageInput.value.trim();
-
         const nameError = document.querySelector("#name-error");
         const emailError = document.querySelector("#email-error");
         const messageError = document.querySelector("#message-error");
         const successMessage = document.querySelector("#success-message");
+
+        const nameValue = nameInput.value.trim();
+        const emailValue = emailInput.value.trim();
+        const messageValue = messageInput.value.trim();
 
         nameError.textContent = "";
         emailError.textContent = "";
@@ -150,7 +157,8 @@ if (contactForm) {
             emailError.textContent = "Invalid input: email is required.";
             formIsValid = false;
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
-            emailError.textContent = "Invalid input: enter a valid email address.";
+            emailError.textContent =
+                "Invalid input: enter a valid email address.";
             formIsValid = false;
         }
 
@@ -159,8 +167,13 @@ if (contactForm) {
             formIsValid = false;
         }
 
-        if (formIsValid) {
-            successMessage.textContent = "Your message was submitted successfully!";
+               if (formIsValid) {
+            settings.visitorName = nameValue;
+            saveSettings();
+
+            successMessage.textContent =
+                "Your message was submitted successfully!";
+
             contactForm.reset();
         }
     });
