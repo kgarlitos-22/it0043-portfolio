@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/theme-init.js"></script>
+    <link rel="stylesheet" href="styles.css?v=4">
+    <script src="js/script.js?v=2" defer></script>
+    <title>My Works | Sheene Garlitos</title>
+</head>
+<body>
+    <header>
+        <div class="centered-div">
+            <div class="sheene-card">My Works</div>
+
+            <button id="menu-button" type="button">☰</button>
+            <button id="theme-button" type="button">🌙 Dark Mode</button>
+
+            <nav id="main-nav">
+                <a href="index.html">HOME</a>
+                <a href="about.html">ABOUT</a>
+                <a href="works.html?v=3">WORKS</a>
+                <a href="skills.html">SKILLS</a>
+                <a href="contact.html">CONTACT</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="portfolio-layout">
+            <nav class="category-list" aria-label="Work categories">
+                <button class="category-button" type="button" data-category="traditional-mediums">
+                    Traditional Mediums
+                </button>
+                <button class="category-button" type="button" data-category="digital-art">
+                    Digital Art
+                </button>
+                <button class="category-button" type="button" data-category="3d-art">
+                    3D Art
+                </button>
+                <button class="category-button" type="button" data-category="written-stories">
+                    Written Stories
+                </button>
+                <button class="category-button" type="button" data-category="films">
+                    Films
+                </button>
+                <button class="category-button" type="button" data-category="animation">
+                    Animation
+                </button>
+            </nav>
+
+            <section class="work-display" id="default-display">
+                <p class="category-description">A collection of my creative work</p>
+                <img src="sheeka.jpg" alt="Sheeka" class="default-work-image">
+            </section>
+
+            <section class="work-display" id="traditional-mediums" hidden>
+                <p class="category-description">Artwork made with traditional materials</p>
+                <div class="artwork-grid">
+                    <img src="works/adultery.jpg" alt="Traditional artwork">
+                    <img src="works/sustinet.png" alt="Traditional artwork">
+                </div>
+            </section>
+
+            <section class="work-display" id="digital-art" hidden>
+                <p class="category-description">Digital illustrations and scenery</p>
+
+                <div class="artwork-grid digital-grid">
+                    <img src="works/snow bg.png" alt="Digital scenery">
+                    <img src="works/bnw.png" alt="Digital artwork">
+                    <img src="works/bg prodigal.jpg" alt="Digital illustration">
+                    <img src="works/turnaround doggy.png" alt="Dog character turnaround">
+                    <img src="works/postcard.jpg" alt="Digital postcard">
+                    <img src="works/bi.jpg" alt="Digital illustration">
+                </div>
+            </section>
+
+            <section class="work-display" id="3d-art" hidden>
+                <p class="category-description">Three-dimensional models and projects</p>
+                <div class="artwork-grid">
+                    <img src="works/poom.jpg" alt="3D artwork">
+                    <img src="works/chess-near.jpg" alt="3D artwork">
+                </div>
+            </section>
+
+            <section class="work-display" id="written-stories" hidden>
+                <p class="category-description">Scripts and stories I’ve written</p>
+                <div class="artwork-grid written-grid">
+                    <img src="works/if the watch fits.jpg" alt="Written story">
+                    <img src="works/the prodigal son.jpg" alt="Written story">
+                    <img class="wide-story" src="works/i like you.png" alt="Written story">
+                </div>
+            </section>
+
+            <section class="work-display" id="films" hidden>
+                <p class="category-description">Films and videos I’ve directed</p>
+                <div class="artwork-grid films-grid">
+                    <img src="works/tomorrow.png" alt="Film project">
+                    <img class="centered-film" src="works/huling hulog.jpg" alt="Film project">
+                </div>
+            </section>
+
+            <section class="work-display" id="animation" hidden>
+                <p class="category-description">My 2D animation projects</p>
+
+                <div class="artwork-grid">
+                    <video controls>
+                        <source src="works/snow animation.mp4" type="video/mp4">
+                        Your browser does not support this video.
+                    </video>
+
+                    <video controls>
+                        <source src="works/sneaky spoon.mp4" type="video/mp4">
+                        Your browser does not support this video.
+                    </video>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 My Portfolio</p>
+    </footer>
+
+</body>
+</html>

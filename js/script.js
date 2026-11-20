@@ -178,3 +178,16 @@ if (contactForm) {
         }
     });
 }
+
+const categoryButtons = document.querySelectorAll(".category-button");
+const workDisplays = document.querySelectorAll(".work-display");
+
+categoryButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const selectedCategory = button.dataset.category;
+
+        workDisplays.forEach((display) => {
+            display.hidden = display.id !== selectedCategory;
+        });
+    });
+});

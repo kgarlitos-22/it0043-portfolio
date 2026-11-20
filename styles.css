@@ -2,6 +2,8 @@
     --color-background: #ffa7a7;
     --color-text: #000000;
     --color-primary: #ab54e7;
+    --color-light-green: #a6ff83;
+    --color-dark-purple: #7040a8;
 
     --space-1: 4px;
     --space-2: 8px;
@@ -16,91 +18,37 @@
     --text-heading: 48px;
 }
 
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body,
+input,
+button {
+    color: var(--color-text);
+    font-family: Arial, sans-serif, "Noto Color Emoji";
+    font-size: var(--text-body);
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background: var(--color-background);
+}
+
+main {
+    flex: 1;
+}
+
 header {
     position: relative;
     padding-top: 20px;
-}
-
-#menu-button {
-    position: absolute;
-    top: var(--space-3);
-    right: var(--space-3);
-    z-index: 10;
-}
-
-.profile-pic {
-    object-fit: cover;
-    width: min(25rem, 90vw);
-height: min(25rem, 90vw);
-    border-radius: 50%;
-    margin: 2rem auto;
-    display: block;
-}
-
-.meet {
-    font-size: var(--text-heading);
-    font-weight: bold;
-    color: #cf6ddc;
-    background-color: #ffffff;
-}
-
-.button {
-    display: block;
-    margin: 20px auto;
-    width: fit-content;
-    padding: 15px 30px;
-    background-color: var(--color-primary);
-    color: white;
-    text-decoration: none;
-    border-radius: 15px;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.button:hover {
-    background-color: #8d35c5;
-}
-
-.button:focus {
-    outline: 3px solid white;
-    outline-offset: 3px;
-}
-
-footer {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background-color: var(--color-primary);
-    color: white;
-    margin-top: auto;
-    width: 100%;
-}
-
-.sheene-card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #c577f5;
-    font-size: clamp(2rem, 12vw, 3rem);
-    font-weight: bold;
-    background-color: rgb(166, 255, 131);
-    width: calc(100% - 2rem);
-    max-width: 800px;
-    margin: 40px auto;
-    padding: var(--space-2);
-    border-radius: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    box-s
-}
-
-.card {
-    background-color: white;
-    max-width: 800px;
-    margin: 40px auto;
-    padding: var(--space-4);
-    border-radius: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .centered-div {
@@ -111,13 +59,48 @@ footer {
     padding: 0 var(--space-3) var(--space-3);
 }
 
+.sheene-card {
+    display: flex;
+    width: calc(100% - 2rem);
+    max-width: 800px;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto;
+    padding: var(--space-2);
+    border-radius: 20px;
+    background-color: var(--color-light-green);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    color: #c577f5;
+    font-size: clamp(2rem, 12vw, 3rem);
+    font-weight: bold;
+    text-align: center;
+}
+
+#menu-button,
+#theme-button {
+    position: absolute;
+    top: var(--space-3);
+    z-index: 10;
+    border-radius: 6px;
+    background-color: var(--color-primary);
+    color: white;
+}
+
+#menu-button {
+    right: var(--space-3);
+}
+
+#theme-button {
+    right: 64px;
+}
+
 nav {
     display: flex;
+    width: 100%;
+    max-width: 100%;
     flex-wrap: wrap;
     justify-content: center;
     gap: var(--space-3);
-    width: 100%;
-    max-width: 100%;
     box-sizing: border-box;
 }
 
@@ -128,12 +111,20 @@ nav {
 nav a {
     display: inline-block;
     padding: var(--space-3);
-    background-color: var(--color-primary);
-    color: white;
-    text-decoration: none;
     border-radius: 8px;
-    font-weight: bold;
+    background-color: var(--color-primary);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#menu-button:hover,
+#theme-button:hover,
+nav a:hover,
+.button:hover,
+.category-button:hover {
+    background-color: #8d35c5;
 }
 
 nav a:focus {
@@ -141,107 +132,53 @@ nav a:focus {
     outline-offset: 3px;
 }
 
-nav a:hover {
-    background-color: #8d35c5;
+.profile-pic {
+    display: block;
+    width: min(25rem, 90vw);
+    height: min(25rem, 90vw);
+    margin: 2rem auto;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-#skills-container {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-4);
+.meet {
+    background-color: white;
+    color: #cf6ddc;
+    font-size: var(--text-heading);
+    font-weight: bold;
 }
 
-.skill-column {
-    padding: var(--space-3);
-    background-color: #a6ff83;
-    color: black;
-    border-radius: 12px;
-}
-
-.skill-column h3 {
-    text-align: center;
-    color: var(--color-text);
-}
-
-.skill-column p {
-    text-align: center;
-}
-
-html.dark-mode {
-    --color-background: #a13054;
-    --color-text: #f5f5f5;
-    --color-primary: #7040a8;
-}
-
-html.dark-mode .skill-column {
-    background-color: #49304f;
-}
-
-html.dark-mode .card {
-    background-color: #2d2d2d;
-    color: #f5f5f5;
-}
-
-html.dark-mode .sheene-card {
-    background-color: #4f8f45;
-    color: #f5f5f5;
-}
-
-#theme-button {
-    position: absolute;
-    top: var(--space-3);
-    right: 64px;
-    z-index: 10;
-}
-
-#menu-button,
-#theme-button {
+.button {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 15px 30px;
+    border-radius: 15px;
     background-color: var(--color-primary);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: white;
-    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-#menu-button:hover,
-#theme-button:hover {
-    background-color: #8d35c5;
+.button:focus {
+    outline: 3px solid white;
+    outline-offset: 3px;
 }
 
-body,
-html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-}
-
-html,
-body {
-    min-height: 100%;
-}
-
-body,
-input,
-button {
-    font-size: var(--text-body);
-    font-family: Arial, sans-serif, "Noto Color Emoji";
-    color: var(--color-text);
-}
-
-body {
-    background: var(--color-background);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-main {
-    flex: 1;
+.card {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: var(--space-4);
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .top-section {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     gap: 50px;
     padding: 25px;
 }
@@ -254,6 +191,28 @@ main {
 .skills-card h2 {
     color: white;
     text-align: center;
+}
+
+#skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+}
+
+.skill-column {
+    padding: var(--space-3);
+    border-radius: 12px;
+    background-color: var(--color-light-green);
+    color: black;
+}
+
+.skill-column h3,
+.skill-column p {
+    text-align: center;
+}
+
+.skill-column h3 {
+    color: var(--color-text);
 }
 
 #contact-form {
@@ -276,38 +235,182 @@ main {
 
 #contact-form button {
     padding: var(--space-2);
-    background-color: var(--color-primary);
-    color: white;
     border: none;
     border-radius: 6px;
+    background-color: var(--color-primary);
+    color: white;
     cursor: pointer;
 }
 
 .error-message {
-    color: #c00000;
     margin: 0;
+    color: #c00000;
 }
 
 #success-message {
-    color: green;
     margin: 0;
+    color: green;
 }
 
-@media (max-width: 600px) {
-    #skills-container {
-        grid-template-columns: 1fr;
-    }
-
-    nav {
-    gap: var(--space-2);
+footer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    background-color: var(--color-primary);
+    color: white;
+    text-align: center;
 }
 
-nav a {
-    padding: var(--space-2);
-}
+footer p {
+    width: 100%;
+    margin: var(--space-3);
 }
 
-html.dark-mode .skill-column,
+.portfolio-layout {
+    display: grid;
+    width: 100%;
+    max-width: 1200px;
+    grid-template-columns: minmax(180px, 250px) minmax(0, 1fr);
+    gap: var(--space-5);
+    box-sizing: border-box;
+    margin: var(--space-5) auto;
+    padding: 0 var(--space-3);
+}
+
+.category-list {
+    position: sticky;
+    top: 20px;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-self: start;
+    gap: var(--space-3);
+    padding-right: var(--space-4);
+    border-right: 2px solid var(--color-primary);
+}
+
+.category-button {
+    width: 100%;
+    box-sizing: border-box;
+    padding: var(--space-3);
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-primary);
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.category-button:focus-visible {
+    outline: 3px solid var(--color-text);
+    outline-offset: 3px;
+}
+
+.work-display {
+    min-width: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--color-text);
+}
+
+.work-display[hidden] {
+    display: none;
+}
+
+.category-description {
+    margin: 0 0 var(--space-4);
+    padding: var(--space-3);
+    border-radius: 10px;
+    background-color: var(--color-light-green);
+    color: var(--color-dark-purple);
+    font-size: var(--text-body);
+    font-weight: bold;
+    text-align: center;
+}
+
+.default-work-image {
+    display: block;
+    width: min(100%, 500px);
+    max-height: 500px;
+    margin: 0 auto;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+.artwork-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+    gap: var(--space-4);
+}
+
+.artwork-grid img,
+.artwork-grid video {
+    display: block;
+    width: 100%;
+    max-height: 400px;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+.digital-grid,
+.written-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.wide-story {
+    grid-column: 1 / -1;
+}
+
+.films-grid {
+    grid-template-columns: 1fr;
+}
+
+.centered-film {
+    justify-self: center;
+}
+
+.about-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+}
+
+.about-pic {
+    width: min(35%, 280px);
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.about-intro {
+    flex: 1;
+}
+
+html.dark-mode {
+    --color-background: #a13054;
+    --color-text: #f5f5f5;
+    --color-primary: #7040a8;
+}
+
+html.dark-mode .card {
+    background-color: #2d2d2d;
+    color: #f5f5f5;
+}
+
+html.dark-mode .sheene-card {
+    background-color: var(--color-light-green);
+    color: var(--color-dark-purple);
+}
+
+html.dark-mode .skill-column {
+    background-color: #4f8f45;
+    color: white;
+}
+
 html.dark-mode .skill-column h3,
 html.dark-mode .skill-column p {
     color: white;
@@ -317,12 +420,84 @@ html.dark-mode .card:has(#skills-container) {
     background-color: #49304f;
 }
 
-html.dark-mode #skills-container .skill-column {
-    background-color: #4f8f45;
-}
-
 html.dark-mode #contact-form input,
 html.dark-mode #contact-form textarea {
-    color: #000;
-    background-color: #fff;
+    background-color: white;
+    color: black;
+}
+
+@media (max-width: 650px) {
+    #skills-container {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        gap: var(--space-2);
+    }
+
+    nav a {
+        padding: var(--space-2);
+    }
+
+    #main-nav {
+        display: flex;
+        max-width: min(100%, 250px);
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-2);
+        margin-inline: auto;
+    }
+
+    .portfolio-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-3);
+        margin: var(--space-3) auto;
+    }
+
+    .category-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 0 0 var(--space-3);
+        border-right: 0;
+        border-bottom: 2px solid var(--color-primary);
+    }
+}
+
+@media (max-width: 600px) {
+    .about-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-pic {
+        width: min(70%, 280px);
+    }
+}
+
+@media (max-width: 400px) {
+    #main-nav {
+        column-gap: 4px;
+    }
+
+    #main-nav a {
+        padding: var(--space-2) 6px;
+        font-size: 14px;
+    }
+}
+
+.about-card > .about-pic {
+    width: 280px;
+    height: 280px;
+    max-width: 100%;
+    flex: 0 0 280px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+@media (max-width: 600px) {
+    .about-card > .about-pic {
+        width: min(70vw, 280px);
+        height: min(70vw, 280px);
+        flex-basis: auto;
+    }
 }
